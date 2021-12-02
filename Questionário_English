@@ -1,0 +1,29 @@
+import random
+
+perguntas = ["1 - Past of be ?", "2 - Past of see ?", "3 - Past of speak ?" ]
+alternativas = [ 'a)is\nb)where\nc)was','a)seen\nb)seed\nc)saw','a)speaks\nb)spoken\nc)spoke']
+gabarito = [ "c","c","c"]
+
+rodadas = 2
+pontuacao = 0
+rodada_atual = 1
+perguntas_sorteadas = []
+
+while rodada_atual <= rodadas:
+    perguntas_disponiveis = random.randint(0,len(perguntas)-1)
+    print(f"Na rodada {rodada_atual} foi sorteada {perguntas_disponiveis}.")
+
+    if perguntas_disponiveis not in perguntas_sorteadas:
+        perguntas_sorteadas.append(perguntas_disponiveis)
+        rodada_atual+=1
+        print(perguntas[perguntas_disponiveis])
+        opcao_escolhida = input(alternativas[perguntas_disponiveis]+'\nResposta: ')
+
+        if opcao_escolhida == gabarito[perguntas_disponiveis].upper():
+            pontuacao +=100
+            print(f'Você acertou! A sua pontuação é {pontuacao}')
+        else:
+            print(f'Você errou! A respota correta é a letra {gabarito[perguntas_disponiveis]}!')
+            break
+
+        rodada_atual+=1
